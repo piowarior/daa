@@ -1,0 +1,28 @@
+@startuml
+title Simpan Pinjam Kendaraan - Diagram Use Case
+
+actor "Pengguna" as user
+actor "Admin" as admin
+
+rectangle "Sistem Simpan Pinjam Kendaraan" {
+    usecase "Registrasi dan Login" as UC01
+    usecase "Manajemen Kendaraan" as UC02
+    usecase "Pencarian Kendaraan" as UC03
+    usecase "Peminjaman Kendaraan" as UC04
+    usecase "Pembayaran" as UC05
+    usecase "Pengembalian Kendaraan" as UC06
+    usecase "Notifikasi Pengingat" as UC07
+    usecase "Laporan Transaksi" as UC08
+}
+
+user --> UC01 : Registrasi dan Login
+user --> UC02 : Tambah, Edit, Hapus Kendaraan
+user -down-> UC03 : Mencari dan Memilih Kendaraan
+user --> UC04 : Mengajukan Peminjaman Kendaraan
+user --> UC05 : Melakukan Pembayaran
+user --> UC06 : Mengembalikan Kendaraan
+user <--> UC07 : Menerima Notifikasi Pengingat
+
+admin --> UC08 : Melihat Laporan Transaksi
+
+@enduml

@@ -1,0 +1,38 @@
+@startuml
+actor Peminjam
+actor Admin
+
+usecase "Registrasi" as UC1
+usecase "Login" as UC2
+usecase "Melihat Daftar Perangkat" as UC3
+usecase "Memesan Perangkat" as UC4
+usecase "Melakukan Pembayaran" as UC5
+usecase "Pengambilan Perangkat" as UC6
+usecase "Pengembalian Perangkat" as UC7
+usecase "Verifikasi Identitas" as UC8
+usecase "Mengelola Data Perangkat" as UC9
+usecase "Mengecek Ketersediaan Perangkat" as UC10
+usecase "Memeriksa Kondisi Perangkat" as UC11
+usecase "Menangani Denda" as UC12
+usecase "Mengirim Notifikasi" as UC13
+
+Peminjam --> UC1
+Peminjam --> UC2
+Peminjam --> UC3
+Peminjam --> UC4
+Peminjam --> UC5
+Peminjam --> UC6
+Peminjam --> UC7
+
+Admin --> UC8
+Admin --> UC9
+Admin --> UC10
+Admin --> UC11
+Admin --> UC12
+Admin --> UC13
+
+UC4 --> UC10 : <<include>>
+UC6 --> UC8 : <<include>>
+UC7 --> UC11 : <<include>>
+UC7 --> UC12 : <<include>>
+@enduml

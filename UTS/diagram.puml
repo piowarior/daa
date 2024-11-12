@@ -1,28 +1,56 @@
 @startuml
-title Simpan Pinjam Kendaraan - Diagram Use Case
+start
 
-actor "Pengguna" as user
-actor "Admin" as admin
+:Pengguna Membuka Aplikasi GameShare;
+if (Sudah Terdaftar?) then (Yes)
+    :Pengguna Login;
+else (No)
+    :Pengguna Registrasi (Isi Data & Verifikasi);
+    :Pengguna Login;
+endif
 
-rectangle "Sistem Simpan Pinjam Kendaraan" {
-    usecase "Registrasi dan Login" as UC01
-    usecase "Manajemen Kendaraan" as UC02
-    usecase "Pencarian Kendaraan" as UC03
-    usecase "Peminjaman Kendaraan" as UC04
-    usecase "Pembayaran" as UC05
-    usecase "Pengembalian Kendaraan" as UC06
-    usecase "Notifikasi Pengingat" as UC07
-    usecase "Laporan Transaksi" as UC08
-}
+if (Login Berhasil?) then (Yes)
+    :Pengguna Memilih Perangkat untuk Disewa;
+    :Pengguna Melakukan Pemesanan;
+    :Pembayaran Sewa;
+    :Admin Menerima & Memeriksa Pesanan;
+    
+    if (Perangkat Tersedia?) then (Yes)
+        :Admin Mengonfirmasi Pesanan;
+        :Notifikasi ke Peminjam untuk Pengambilan;
+        :Peminjam Datang ke Kantor GameShare;
+        :Verifikasi Identitas & Pengambilan Perangkat;
+        
+        while (Masa Sewa Berjalan)
+            :Peminjam Menggunakan Perangkat;
+        endwhile
 
-user --> UC01 : Registrasi dan Login
-user --> UC02 : Tambah, Edit, Hapus Kendaraan
-user -down-> UC03 : Mencari dan Memilih Kendaraan
-user --> UC04 : Mengajukan Peminjaman Kendaraan
-user --> UC05 : Melakukan Pembayaran
-user --> UC06 : Mengembalikan Kendaraan
-user <--> UC07 : Menerima Notifikasi Pengingat
+        :Peminjam Mengembalikan Perangkat ke Kantor GameShare;
+        :Admin Menerima & Memeriksa Kondisi Perangkat;
 
-admin --> UC08 : Melihat Laporan Transaksi
+        if (Perangkat Dalam Kondisi Baik?) then (Yes)
+            if (Pengembalian Tepat Waktu?) then (Yes)
+                :Transaksi Selesai;
+            else (No)
+                :Admin Menghitung Denda Keterlambatan;
+                :Tagihan Denda ke Peminjam;
+                :Peminjam Membayar Denda;
+                :Transaksi Selesai;
+            endif
+        else (No)
+            :Admin Menemukan Kerusakan;
+            :Admin Menghitung Denda Kerusakan;
+            :Tagihan Denda ke Peminjam;
+            :Peminjam Membayar Denda;
+            :Transaksi Selesai;
+        endif
+    else (No)
+        :Pesanan Dibatalkan & Notifikasi ke Peminjam;
+    endif
+else (No)
+    :Tampilkan Pesan Error;
+    -> [Kembali ke Awal] Pengguna Membuka Aplikasi GameShare;
+endif
 
+stop
 @enduml

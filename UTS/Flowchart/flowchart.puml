@@ -1,0 +1,28 @@
+@startuml flowchart
+start
+
+:Peminjam Datang ke Kantor GameShare untuk Melakukan Pembayaran;
+
+:Admin Mencatat Transaksi Pembayaran;
+
+:Admin Memeriksa Status Pembayaran;
+if (Pembayaran sudah di lakukan/Berhasil?) then (Yes)
+    :Peminjam Mengambil Perangkat;
+    :Admin Mencatat Transaksi dan Pembayaran pada Sistem;
+
+
+:Pembayaran Dicatat di Tabel Pembayaran;
+
+:Tagihan Dicatat di Tabel Tagihan;
+
+:Tagihan diberikan pada Peminjam;
+
+:Transaksi Dicatat di Tabel Transaksi;
+
+else (No)
+
+    :Peminjam Mengulang Pembayaran;
+endif
+
+stop
+@enduml

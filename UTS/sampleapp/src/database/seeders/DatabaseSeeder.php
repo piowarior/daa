@@ -13,13 +13,34 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        $user = \App\Models\User::factory()->create([
-            'name' => 'Admin',
-            'email' => 'admin@admin.com',
-        ]);
-
-        $user->assignRole('super_admin');
+       $this->callSeeders();
+       $this->seedUsers();
     }
+
+    private function seedUsers(): void{
+        if(!User::where('email','admin@admin.com')->exists()){
+            $users = User::factory()->createmany([
+                [
+                    'name' => 'Admin',
+                    'email' =>  'admin@admin.com',
+                    'password' => bcrypt('password'),
+                ],
+        ]);
+        foreach ($users as $user){
+            if($user->email=='admin@admin.com'){
+                $user->assignRole('super_admin');
+            }
+        }
+        }
+    }
+
+    private function callSeeders(): void {
+        $this->call([
+            RoleSeeder::class,
+            PembayaranSeeder::class,
+            TagihanSeeder::class,
+            TransaksiSeeder::class,
+        ]);
+    }
+
 }

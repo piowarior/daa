@@ -1,0 +1,22 @@
+@startuml usecase
+actor Peminjam
+actor Admin
+
+rectangle "Sistem Pembayaran GameShare" {
+    Peminjam --> (Lihat Perangkat yang Tersedia)
+    Peminjam --> (Pilih Perangkat untuk Disewa)
+    Peminjam --> (Datang ke Kantor GameShare untuk Verifikasi data & Pembayaran)
+
+    (Lihat Perangkat yang Tersedia) --> (Pilih Perangkat untuk Disewa)
+    (Pilih Perangkat untuk Disewa) --> (Datang ke Kantor GameShare untuk Verifikasi data & Pembayaran)
+
+    Admin --> (Catat Transaksi Pembayaran)
+    Admin --> (Periksa Status Pembayaran)
+    Admin --> (Catat Pembayaran di Tabel Pembayaran)
+    Admin --> (Catat Tagihan di Tabel Tagihan)
+    Admin --> (Catat Transaksi di Tabel Transaksi)
+}
+
+
+(Periksa Status Pembayaran) .down.> (Catat Pembayaran di Tabel Pembayaran) : <<include>>
+@enduml

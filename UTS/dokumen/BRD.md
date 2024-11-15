@@ -51,7 +51,7 @@ Alur bisnis keuangan dalam sistem penyewaan GameShare mencakup seluruh transaksi
    - **Jika tidak**, admin menolak pembayaran dan peminjam diminta untuk mengulang proses pembayaran.
 
 5. **Admin mengonfirmasi pembayaran.**
-   - Jika pembayaran berhasil, admin mengonfirmasi pembayaran dan peminjam dapat mengambil perangkat.
+   - Jika pembayaran sudah di lakukan/berhasil, admin mengonfirmasi pembayaran dan peminjam dapat mengambil perangkat.
 
 6. **Peminjam mengambil perangkat.**
    - Peminjam membawa perangkat yang disewa setelah pembayaran dikonfirmasi.
@@ -85,7 +85,7 @@ Alur bisnis keuangan dalam sistem penyewaan GameShare mencakup seluruh transaksi
 |     | b. View: Melihat status pembayaran dan rincian transaksi |                     |                    |
 |     | c. Update: Memperbarui status pembayaran |                     |                    |
 |     | d. Delete: Menghapus pembayaran yang gagal |                     |                    |
-|     | e. Approval: Admin memverifikasi dan menyetujui pembayaran |                     |                    |
+|     | e. Approval: Admin memeriksa dan menyetujui pembayaran jika pembayaran sudah di lakukan |                     |                    |
 
 #### 3.1.2 Modul Tagihan
 

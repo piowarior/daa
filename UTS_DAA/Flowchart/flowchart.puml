@@ -1,0 +1,42 @@
+@startuml
+start
+
+:Peminjam Membuka Situs GameShare;
+:Peminjam Melihat Barang yang Tersedia untuk Disewa;
+:Peminjam Memutuskan Barang yang Akan Disewa;
+:Peminjam Datang ke Kantor GameShare untuk memesan barang serta mengisi data diri;
+
+:Admin Mencatat Data pengguna, Pemesanan dan Verifikasi;
+:Pembayaran Sewa;
+
+if (Perangkat Tersedia?) then (Yes)
+    :Admin Mengonfirmasi Pesanan;
+    :Peminjam Mengambil Perangkat dari Kantor;
+    :Peminjam Menggunakan Perangkat;
+
+    :Peminjam Mengembalikan Perangkat ke Kantor GameShare;
+    :Admin Menerima dan Memeriksa Kondisi Perangkat;
+
+    if (Perangkat Dalam Kondisi Baik?) then (Yes)
+        if (Pengembalian Tepat Waktu?) then (Yes)
+            :Transaksi Selesai;
+        else (No)
+            :Admin Menghitung Denda Keterlambatan;
+            :Tagihan Denda ke Peminjam;
+            :Peminjam Membayar Denda;
+            :Transaksi Selesai;
+        endif
+    else (No)
+        :Admin Menemukan Kerusakan;
+        :Admin Menghitung Denda Kerusakan;
+        :Tagihan Denda ke Peminjam;
+        :Peminjam Membayar Denda;
+        :Transaksi Selesai;
+    endif
+else (No)
+    :Pesanan Dibatalkan;
+endif
+
+stop
+@enduml
+

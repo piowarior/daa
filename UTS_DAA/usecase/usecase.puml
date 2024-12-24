@@ -1,0 +1,24 @@
+@startuml
+
+actor "Peminjam" as P
+actor "Admin GameShare" as A
+
+rectangle "Sistem Simpan Pinjam GameShare" {
+    usecase "Lihat Perangkat" as UC1
+    usecase "Pilih Perangkat dan Isi Data" as UC2
+    usecase "Pembayaran di Kantor" as UC3
+    usecase "Konfirmasi Pesanan" as UC4
+    usecase "Proses Peminjaman" as UC5
+    usecase "Proses Pengembalian" as UC6
+    usecase "Catat Denda Keterlambatan" as UC7
+}
+
+P --> UC1 : Melihat perangkat
+P --> UC2 : Memilih perangkat
+P --> UC3 : Membayar biaya
+A --> UC4 : Mengonfirmasi pesanan
+A --> UC5 : Memproses peminjaman
+A --> UC6 : Memproses pengembalian
+A --> UC7 : Mencatat denda jika ada, di masukkan dalam lingkup pesanan sebegai status apakah memiliki denda atau tidak
+
+@enduml

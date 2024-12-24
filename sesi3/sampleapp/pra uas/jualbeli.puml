@@ -1,0 +1,31 @@
+@startuml
+
+actor Pembeli
+actor Admin
+
+usecase "Login/Register" as UC_Login
+usecase "Lihat Produk" as UC_LihatProduk
+usecase "Tambah ke Keranjang" as UC_TambahKeKeranjang
+usecase "Checkout" as UC_Checkout
+usecase "Pembayaran" as UC_Pembayaran
+usecase "Lacak Pesanan" as UC_LacakPesanan
+usecase "Kelola Produk" as UC_KelolaProduk
+usecase "Kelola Pesanan" as UC_KelolaPesanan
+usecase "Konfirmasi Pembayaran" as UC_KonfirmasiPembayaran
+usecase "Kelola Pengguna" as UC_KelolaPengguna
+usecase "Kelola Stok" as UC_KelolaStok
+
+Pembeli --> UC_Login
+Pembeli --> UC_LihatProduk
+Pembeli --> UC_TambahKeKeranjang
+Pembeli --> UC_Checkout
+Pembeli --> UC_Pembayaran
+Pembeli --> UC_LacakPesanan
+
+Admin --> UC_KelolaProduk
+Admin --> UC_KelolaPesanan
+Admin --> UC_KonfirmasiPembayaran
+Admin --> UC_KelolaPengguna
+Admin --> UC_KelolaStok
+
+@enduml

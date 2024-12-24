@@ -1,6 +1,6 @@
-# Business Requirements Document (BRD)
-## CV. GameShare
-**Sistem Pembayaran Penyewaan PlayStation GameShare**
+# Business Requirements Document (BRD) 
+## CV. GameShare 
+**Sistem Pembayaran Penyewaan PlayStation GameShare** 
 
 **Tanggal Mulai Proyek**: 15 - 11 - 2024  
 **Klien**: GameShare  

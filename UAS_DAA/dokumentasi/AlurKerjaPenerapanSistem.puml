@@ -1,0 +1,19 @@
+@startuml tes
+
+actor "Tim R&D" as Team
+actor Administrator
+actor Sistem
+
+Team -> Team : Membentuk tim R&D
+Team -> Team : Menetapkan anggota tim
+Team -> Team : Merencanakan penelitian
+
+Team -> Team : Melaksanakan penelitian sesuai rencana
+Team -> Team : Mengumpulkan data dan eksperimen
+Team -> Administrator : Mencatat laporan hasil penelitian
+
+Administrator -> Sistem : Menyimpan dan mengelola data penelitian
+Sistem -> Administrator : Memberikan akses ke data penelitian
+Administrator -> Team : Mendokumentasikan hasil penelitian
+
+@enduml
